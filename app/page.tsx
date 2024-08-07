@@ -13,10 +13,15 @@ Amplify.configure(outputs);
 
 const client = generateClient<Schema>();
 
-function AddTodoModal({ isOpen, onAdd }) {
+interface AddTodoModalProps {
+  isOpen: boolean;
+  onAdd: (content: string) => void;
+}
+
+function AddTodoModal({ isOpen, onAdd }: AddTodoModalProps) {
   const [content, setTodoContent] = useState('');
 
-  function handleInputChange(e) {
+  function handleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTodoContent(e.target.value);
   };
 
